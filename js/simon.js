@@ -16,29 +16,31 @@ console.log(randomNum);
 let timeLeft = 3;
 console.log(timeLeft);
 
-let timerId = setInterval(countdown, 1000);
 
-function countdown() {
+setInterval(function() {
+    
   if (timeLeft == 0) {
-    clearTimeout(timerId);
+    clearTimeout(1000 * 30);
     
     for (let i = 1; i < randomNum.length; i++) { // l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente,
         numUser = parseInt(prompt("Inserisci i numeri che hai visto uno alla volta:"))
         if (randomNum.includes(numUser)) {
             rispCorette =
             rispGiuste.push(numUser)
-            console.log(rispCorette++ + " Risposte Corrette");
+            console.log(rispCorette + " Risposte Corrette");
             console.log(rispGiuste);
         } 
     } 
-    randomNum.splice(0,randomNum.length);
-    console.log(randomNum);
+    // randomNum.splice(0,randomNum.length);
+    // console.log(randomNum);
     
   } else {
     console.log(
     timeLeft--)
   }
+  1000
 }
+);
 
 
 
