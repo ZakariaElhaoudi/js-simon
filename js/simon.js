@@ -3,6 +3,10 @@ Da lì parte un timer di 30 secondi.
 Dopo 30 secondi i numeri scompaiono e l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
 Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.*/
 
+// variabili globali 
+let numUser = "";
+let rispCorette = 0;
+let rispErrate = 0;
 
 // Visualizzare in pagina 5 numeri casuali.
 const randomNum = createNumRandomOrderArr(1,100, 5,)
@@ -18,11 +22,18 @@ function countdown() {
   if (timeLeft == 0) {
     clearTimeout(timerId);
     for (let i = 0; i < randomNum.length; i++) {
-        const numUser = parseInt(prompt("inserisci i numeri giusti qui!!"))
-       
+        numUser = parseInt(prompt("Inserisci i numeri che hai visto uno alla volta:"))
+        if (randomNum.includes(numUser)) {
+            rispCorette++
+            console.log(rispCorette++ + " Risposte Corrette");
+        } else {
+            rispErrate++
+            console.log(rispErrate++ + " Risposte Errate");
+        }
     } 
     randomNum.splice(0,randomNum.length);
     console.log(randomNum);
+    
   } else {
     console.log(
     timeLeft--)
@@ -33,12 +44,13 @@ function countdown() {
 
 
 
+
  // FUNZIONI 
 // funzione che creare numeri in ordine casuale nell’array 
-function createNumRandomOrderArr(min,max,range,) {
+function createNumRandomOrderArr(min,max,count,) {
     const arrayNum = [];
    
-    while(arrayNum.length < range) { 
+    while(arrayNum.length < count) { 
         // creare un numero casuale nel min max 
     const nuovoNum = numRandomMinMax(min,max) 
         if(!arrayNum.includes(nuovoNum)){
