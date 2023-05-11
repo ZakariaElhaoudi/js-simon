@@ -5,15 +5,15 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 
 // variabili globali 
 let numUser = "";
+let rispGiuste = [];
 let rispCorette = 0;
-let rispErrate = 0;
 
 // Visualizzare in pagina 5 numeri casuali.
 const randomNum = createNumRandomOrderArr(1,100, 5,)
 console.log(randomNum);
 
 // parte un timer di 30 secondi.
-let timeLeft = 30;
+let timeLeft = 3;
 console.log(timeLeft);
 
 let timerId = setInterval(countdown, 1000);
@@ -21,11 +21,14 @@ let timerId = setInterval(countdown, 1000);
 function countdown() {
   if (timeLeft == 0) {
     clearTimeout(timerId);
-    for (let i = 0; i < randomNum.length; i++) { // l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente,
+    
+    for (let i = 1; i < randomNum.length; i++) { // l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente,
         numUser = parseInt(prompt("Inserisci i numeri che hai visto uno alla volta:"))
         if (randomNum.includes(numUser)) {
-            rispCorette++
-            console.log(rispCorette++ + " Risposte Corrette" + randomNum.includes(numUser));
+            rispCorette =
+            rispGiuste.push(numUser)
+            console.log(rispCorette++ + " Risposte Corrette");
+            console.log(rispGiuste);
         } 
     } 
     randomNum.splice(0,randomNum.length);
