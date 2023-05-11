@@ -13,16 +13,16 @@ const randomNum = createNumRandomOrderArr(1,100, 5,)
 console.log(randomNum);
 
 // parte un timer di 30 secondi.
-let timeLeft = 3;
-console.log(timeLeft);
+let time = 0;
+console.log(time);
 
 
-setInterval(function() {
+let stop = setInterval(function() {
     
-  if (timeLeft == 0) {
-    clearTimeout(1000 * 30);
+  if (time === 30) {
+    clearInterval(stop);;
     
-    for (let i = 1; i < randomNum.length; i++) { // l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente,
+    for (let i = 1; i < randomNum.length + 1 ; i++) { // l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente,
         numUser = parseInt(prompt("Inserisci i numeri che hai visto uno alla volta:"))
         if (randomNum.includes(numUser)) {
             rispCorette =
@@ -36,11 +36,10 @@ setInterval(function() {
     
   } else {
     console.log(
-    timeLeft--)
+    time++)
   }
-  1000
-}
-);
+  
+}, 1000 );
 
 
 
