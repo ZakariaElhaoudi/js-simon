@@ -13,7 +13,7 @@ const randomNum = createNumRandomOrderArr(1,100, 5,)
 console.log(randomNum);
 
 // parte un timer di 30 secondi.
-let timeLeft = 3;
+let timeLeft = 30;
 console.log(timeLeft);
 
 let timerId = setInterval(countdown, 1000);
@@ -21,15 +21,12 @@ let timerId = setInterval(countdown, 1000);
 function countdown() {
   if (timeLeft == 0) {
     clearTimeout(timerId);
-    for (let i = 0; i < randomNum.length; i++) {
+    for (let i = 0; i < randomNum.length; i++) { // l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente,
         numUser = parseInt(prompt("Inserisci i numeri che hai visto uno alla volta:"))
         if (randomNum.includes(numUser)) {
             rispCorette++
-            console.log(rispCorette++ + " Risposte Corrette");
-        } else {
-            rispErrate++
-            console.log(rispErrate++ + " Risposte Errate");
-        }
+            console.log(rispCorette++ + " Risposte Corrette" + randomNum.includes(numUser));
+        } 
     } 
     randomNum.splice(0,randomNum.length);
     console.log(randomNum);
