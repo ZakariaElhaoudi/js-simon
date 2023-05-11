@@ -9,7 +9,7 @@ const randomNum = createNumRandomOrderArr(1,100, 5,)
 console.log(randomNum);
 
 // parte un timer di 30 secondi.
-let timeLeft = 30;
+let timeLeft = 3;
 console.log(timeLeft);
 
 let timerId = setInterval(countdown, 1000);
@@ -17,11 +17,19 @@ let timerId = setInterval(countdown, 1000);
 function countdown() {
   if (timeLeft == 0) {
     clearTimeout(timerId);
+    for (let i = 0; i < randomNum.length; i++) {
+        const numUser = parseInt(prompt("inserisci i numeri giusti qui!!"))
+       
+    } 
+    randomNum.splice(0,randomNum.length);
+    console.log(randomNum);
   } else {
     console.log(
     timeLeft--)
   }
 }
+
+
 
 
 
