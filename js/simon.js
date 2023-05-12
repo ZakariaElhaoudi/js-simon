@@ -11,6 +11,8 @@ let rispCorette = 0;
 // Visualizzare in pagina 5 numeri casuali.
 const randomNum = createNumRandomOrderArr(1,100, 5,)
 console.log(randomNum);
+const numeriVincenti = document.getElementById("numeri")
+numeriVincenti.innerHTML = "Numeri vincenti " + randomNum
 
 // parte un timer di 30 secondi.
 let time = 0;
@@ -20,16 +22,21 @@ console.log(time);
 let stop = setInterval(function() {
     
   if (time === 30) {
-    clearInterval(stop);;
-    
+    clearInterval(stop);
+     
+    numeriVincenti.innerHTML = "";
     for (let i = 1; i < randomNum.length + 1 ; i++) { // l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente,
         numUser = parseInt(prompt("Inserisci i numeri che hai visto uno alla volta:"))
         if (randomNum.includes(numUser)) {
+            
+           
             rispCorette =
             rispGiuste.push(numUser)
             console.log(rispCorette + " Risposte Corrette");
             console.log(rispGiuste);
-        } 
+        } else {
+            console.log("you lose");
+        }
     } 
     // randomNum.splice(0,randomNum.length);
     // console.log(randomNum);
